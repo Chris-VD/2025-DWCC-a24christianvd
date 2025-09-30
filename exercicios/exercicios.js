@@ -74,7 +74,6 @@ function imcMaior(n1, n2){
     else{
         console.log("O IMC ("+n2+") da segunda persoa é maior que o da primeira persoa ("+n1+")!");
     }
-    
 }
 
 imcMaior(imc(p1.peso, p1.altura), imc(p2.peso, p2.altura))
