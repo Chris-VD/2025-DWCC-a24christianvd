@@ -1,6 +1,6 @@
 const cadea = 'desenvolvemento web';
 function maiu(str){
-    return str.at(0).toUpperCase() + str.substring(1);
+    return str.at(0).toUpperCase() + str.substring(1).toLowerCase();
 }
 console.log(maiu(cadea)); // 'Desenvolvemento web'
 
@@ -77,8 +77,7 @@ console.log(dias[data.getDay()]);
 function diasDoMes(mes, ano){
     let data = new Date(ano, mes-1, 1);
     let dias = 1;
-    while (true){
-        if (data.getMonth() != mes-1) break;
+    while (!(data.getMonth() != mes-1)){
         dias += 1;
         data = new Date(ano, mes-1, dias);
     }
@@ -93,11 +92,10 @@ console.log(finDeSemana(new Date()), finDeSemana(new Date("2025-10-4")));
 
 function diasDendeAN(data){
     let dias = 0;
-    let ndata = new Date("2025-1-1")
-    while (true){
+    let ndata = new Date(data.getFullYear, 0, 1)
+    while (!(ndata.getMonth() == data.getMonth() && ndata.getDate() == data.getDate())){
         dias++;
         ndata = new Date(2025, 0, dias);
-        if (ndata.getMonth() == data.getMonth() && ndata.getDate() == data.getDate()) break;
     }
     return dias;
 }
@@ -105,8 +103,9 @@ console.log(diasDendeAN(new Date()), diasDendeAN(new Date(2025,11,31)));
 
 function indices(num, arr){
     let res = [];
+    let newn;
     while (true){
-        let newn = arr.indexOf(num);
+        newn = arr.indexOf(num);
         arr[newn] = undefined;
         if (newn == -1) break;
         res.push(newn)
@@ -142,3 +141,50 @@ function primeiraMaiu(str){
 }
 console.log(primeiraMaiu("ola que tal"));
 
+const players = [
+    ["Neuer","Pavard","Martinez","Alaba","Davies","Kimmich","Goretzka","Coman","Muller","Gnarby","Lewandowski",],
+    ["Burki","Schulz","Hummels","Akanji","Hakimi","Weigl","Witsel","Hazard","Brandt","Sancho","Gotze",],
+];
+let [players1, players2] = players;
+console.log(players1, players2);
+
+let [gk, ...fieldPlayers] = players[0];
+console.log(gk, fieldPlayers);
+
+let allPlayers = players.flat();
+console.log(allPlayers);
+
+let players1Final = Array(...players1);
+players1Final.unshift("Thiago", "Coutinho", "Periscic");
+console.log(players1Final);
+
+function toCamel(arr){
+    let result = [];
+    for (element of arr){
+        let [el1, el2] = element.split("_");
+        result.push(el1.toLowerCase() + primeiraMaiu(el2)); // o toLowerCase non é necesario (creo)
+    }
+    return result
+}
+let nomes = ["Novo_nome", "ERM_ERM"];
+let nomesCamel = toCamel(nomes);
+console.log(nomesCamel);
+
+const flightsInfo =
+"_Delayed_Departure;scq93766109;bio2133758440;11:25+_Arrival;bio09433847\
+22;scq93766109;11:45+_Delayed_Arrival;svq7439299980;scq93766109;12:05\
++_Departure;scq93766109;svq2323639855;12:30";
+
+let flightElements = flightsInfo.split("+");
+let elementsInfo = []
+for (element of flightElements){
+    elementsInfo.push(element.split(";"));
+}
+for (element of elementsInfo){
+    let res = [];
+    res.push(element[0].replaceAll("_"," "));
+    res.push(element[1].substring(0,3).toUpperCase());
+    res.push(element[2].substring(0,3).toUpperCase());
+    res.push("("+element[3].replace(":","h")+")");
+    console.log(res.join(" "));
+}
