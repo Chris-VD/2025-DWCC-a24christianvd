@@ -186,5 +186,6 @@ for (element of elementsInfo){
     res.push(element[1].substring(0,3).toUpperCase());
     res.push(element[2].substring(0,3).toUpperCase());
     res.push("("+element[3].replace(":","h")+")");
-    console.log(res.join(" "));
+    console.log(res.join(" ").padStart(36));
 }
+
