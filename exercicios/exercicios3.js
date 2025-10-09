@@ -16,7 +16,7 @@ let game = {
         team2: 6.5,
     }
 };
-let {team1, x: draw, team2} = game.odds;
+let {odds:{team1, x: draw, team2}} = game;
 console.log(team1, draw, team2);
 
 game = {
@@ -27,13 +27,8 @@ for (goal of game.scored){
     console.log("Gol " +(x++)+": "+goal);
 }
 let scores = {}
-for (goalies of game.scored){    
-    if (goalies in scores){
-        scores[goalies] += 1;
-    } else {
-        scores[goalies] = 1;
-    }
-}
+for (goalies of game.scored)
+    scores[goalies] ? scores[goalies]++ : (scores[goalies] = 1);
 console.log(scores);
 
 const gameEvents = new Map([
@@ -49,12 +44,10 @@ const gameEvents = new Map([
 [80, "GOAL"],
 [92, "Yellow card"],
 ]);
-let eventos = new Set(gameEvents.values());
+let eventos = [...new Set(gameEvents.values())];
 console.log(eventos);
 let parte;
 for (let[key, val] of gameEvents){
-    if (key <=45) parte = "[PRIMEIRA PARTE]"
-    else parte = "[SEGUNDA PARTE]"
+    parte = key <= 45 ? "[PRIMEIRA PARTE]" : "[SEGUNDA PARTE]";
     console.log(`${parte} ${key}: ${val}`);
-    
 }
