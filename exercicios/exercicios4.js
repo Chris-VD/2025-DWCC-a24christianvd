@@ -5,7 +5,7 @@ const arrayEntrada = [10, 2, 3, 5, 7, 8, 23, 50];
 let numerosImpares = arr => {
     let res = [];
     for (ele of arr) 
-        if (ele % 2 != 0) res.push(ele);
+        if (ele % 2) res.push(ele);
     return res;
 }
 console.log(numerosImpares(arrayEntrada)); // (4) [3, 5, 7, 23]
@@ -37,7 +37,7 @@ console.log(minMax([1, 2, 3, 4, 5])); // Debe devolver { min: 1, max: 5 }
 let rectangulo = ((l, a) => `A área do rectángulo con largo ${l} e ancho ${a} é ${a*l}`)(2,5);
 console.log(rectangulo);
 
-let letras = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"]
+let letras = "TRWAGMYFPDXBNJZSQVHLCKE";
 let validarDni = dni => letras[parseInt(dni.substring(0,8))%23] == dni[8];
 let dni = "45960722Y";
 console.log(validarDni(dni));
@@ -75,3 +75,17 @@ let monedas = dinero => {
     return billetes;
 }
 console.log(monedas(436.25));
+
+function buscarPatron (texto, patron){
+    text = texto.toUpperCase();
+    patron = patron.toUpperCase();
+    let encontradas = 0;
+    for (let index = 0; index < texto.length; index++) {
+        let res = texto.substring(index, index + patron.length);
+        if (res === patron) encontradas++;
+    }
+    return encontradas;
+}
+
+console.log(buscarPatron("000111101000ABCHA0", "00"));
+
