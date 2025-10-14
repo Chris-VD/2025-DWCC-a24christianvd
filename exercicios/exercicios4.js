@@ -86,6 +86,63 @@ function buscarPatron (texto, patron){
     }
     return encontradas;
 }
-
 console.log(buscarPatron("000111101000ABCHA0", "00"));
 
+const inicioXornada = "07:30";
+const finalXornada = "17:45";
+function axendarReunion(start, time){
+    let [hora, min] = start.split(":");
+    let [horaIni, minIni] = inicioXornada.split(":");
+    let [horaFin, minFin] = finalXornada.split(":");
+
+    let total = hora*60 + min;
+    let totalIni = horaIni*60 + minIni;
+    let totalFin = horaFin*60 + minFin;    
+    if (Number(total) < Number(totalIni) || Number(total) > Number(totalFin)) return false;
+    total = Number(total) + Number(time);
+    return !(Number(total) < Number(totalIni) || Number(total) > Number(totalFin));
+}
+console.assert(axendarReunion("7:00", 15) == false,
+'Fallo comprobando axendarReunión("7:00", 15) == false'
+);
+console.assert(axendarReunion("7:15", 30) == false,
+'Fallo comprobando axendarReunión("7:15", 30) == false'
+);
+console.assert(axendarReunion("7:30", 30) == true, 
+'Fallo comprobando axendarReunión("7:30", 30) == true'
+);
+console.assert(axendarReunion("11:30", 60) == true, 
+'Fallo comprobando axendarReunion("11:30", 60) == true'
+);
+console.assert(axendarReunion("17:00", 45) == true, 
+'Fallo comprobando axendarReunion("17:00", 45) == true'
+);
+console.assert(axendarReunion("17:30", 30) == false,
+'Fallo comprobando axendarReunion("17:30", 30) == false'
+);
+
+// arrayEntrada = [[0, 0, -1, 0],
+// [0, -1, -1, 0]];
+// arraySaida = [[1, 3, -1, 2],
+// [1, -1, -1, 2]];
+function minas(tab, x, y){
+    let found = 0;
+    for (let i = -1; i<=1; i++)     
+        for (let j = -1; j<=1; j++)
+            if (tab[x+i]?.[y+j] === -1) found++; // Precioso
+    return found;
+}
+function parser(tab){
+    res = [];
+    for(let i = 0; i<=tab.length-1; i++){
+        res[i] = [];
+        for (let j = 0; j<= tab[i].length-1; j++)          
+            if (tab[i][j] == -1) res[i][j] = -1;
+            else res[i][j] = minas(tab, i, j);
+    }
+    return res;
+}
+console.log(parser(
+    [[0, 0, -1, 0],
+    [0, -1, -1, 0]]
+));
