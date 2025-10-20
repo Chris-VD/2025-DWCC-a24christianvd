@@ -3,23 +3,15 @@ let result = arrayNotes.filter((nota) => nota >= 5);
 console.log(result);
 
 const objects = [{ price: 1 }, { price: 2 }, { price: 3 }];
-function reductor(total, curr, ind){
-    if (total.price) total = total.price;
-    let returns = total + curr.price;
-    console.log(`Total: ${total}, Current: ${curr.price}, Index: ${ind}, Result: ${returns}`);
+function reductor(total, {price}){
+    let returns = total + price;
     return returns;
 }
-console.log(objects.reduce(reductor));
+console.log(objects.reduce(reductor,0));
 
 
 let nums = [2,6,3,1,6,2,3,-1]
-function mins(min, curr, index){
-    let returns = min
-    if (curr < min) returns = curr;
-    console.log(`Min: ${min}, Current: ${curr}, Index: ${index}, Result: ${returns}`);
-    return returns;
-}
-console.log(nums.reduce(mins));
+console.log(nums.reduce((min, curr)=>curr<min?curr:min));
 
 const persoas = [
 { nome: 'aaron', idade: 65, id: 1 },
@@ -43,21 +35,17 @@ let dias = ["luns", "martes", "mercores", "xoves", "venres", "sábado", "domingo
 let comM = dias.filter((dia) => dia[0] == "m")
 console.log(comM);
 console.log(dias.some((dia) => dia[0] == "s"));
-console.log(dias.every((dia) => dia[0] == "s"));
+console.log(dias.every((dia) => dia[dia.length-1] == "s"));
 console.log(dias.find((dia) => dia[0] == "m"));
 console.log(dias.findIndex((dia) => dia[0] == "m"));
 let diasMaiu = dias.map(dia => dia.toUpperCase());
 console.log(diasMaiu);
 
 let notas = [4,8,4,3,10,5];
-let notasOrd = notas.sort((a, b) => {
-    if (a > b) return 1;
-    if (a < b) return -1;
-    return 0;
-})
+let notasOrd = notas.sort((a, b) => a-b);
 console.log(notasOrd);
 
-function maxs(min, curr, index){
+function maxs(min, curr){
     let returns = min
     if (curr > min) returns = curr;
     //console.log(`Min: ${min}, Current: ${curr}, Index: ${index}, Result: ${returns}`);
@@ -79,7 +67,7 @@ const inventors = [
 { first: "Lise", last: "Meitner", year: 1878, passed: 1968 },
 { first: "Hanna", last: "Hammarström", year: 1829, passed: 1909 },
 ];
-let inventorsDS = inventors.filter(inventor => inventor.year > 1499 && inventor.year < 1600)
+let inventorsDS = inventors.filter(inventor => inventor.year > 1500 && inventor.year < 1601)
 console.log(inventorsDS);
 let nomeCompleto = inventors.map(inventor => inventor.first+" "+inventor.last);
 console.log(nomeCompleto);
@@ -107,7 +95,7 @@ let inventNace = inventors.sort((a,b)=>{
     return 0
 })
 console.log(inventNace);
-let tot = inventors.reduce(((acc, curr)=>acc += curr.year), 0)
+let tot = inventors.reduce(((acc, curr)=>acc += curr.passed - curr.year), 0)
 console.log(tot);
 let invMaisViviu = inventors.sort((a,b)=>{
     let La = a.passed-a.year;
@@ -118,25 +106,9 @@ let invMaisViviu = inventors.sort((a,b)=>{
 }).reverse()
 console.log(invMaisViviu);
 
-const data = [
-"car",
-"car",
-"truck",
-"truck",
-"bike",
-"walk",
-"car",
-"van",
-"bike",
-"walk",
-"car",
-"van",
-"car",
-"truck",
-"pogostick",
-];
+const data = ["car","car","truck","truck","bike","walk","car","van","bike","walk","car","van","car","truck","pogostick"];
 let res = data.reduce((obj, curr)=>{
-    obj[curr] ? obj[curr]++ :obj[curr] = 1
+    obj[curr] ? obj[curr]++ : obj[curr] = 1;
     return obj;
 }, {})
 console.log(res);
