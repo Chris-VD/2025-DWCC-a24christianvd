@@ -1,3 +1,4 @@
+const weekDays = ["D", "L", "M", "Me", "X", "V", "S"]
 function crearCalendario(elemento, ano, mes){
     let data = new Date(ano, mes-1, 1)
     let table = document.createElement("table")
@@ -9,7 +10,23 @@ function crearCalendario(elemento, ano, mes){
         tr.append(th)
     }
     table.append(tr)
+    for (let x = 1; x <= new Date(ano, mes-1, 0).getDate(); x){
+        let tr = document.createElement("tr");
+        for (let y = 0; y <= 6; y++){
+            let td = document.createElement("td");
+            if (daysW[y] == weekDays[data.getDay()]){
+                td.append(x);
+                data.setDate(data.getDate()+1);
+                x++;
+                if (x > new Date(ano, mes-1, 0).getDate()) break;
+            } else{
+                td.append("");
+            }
+            tr.append(td)
+        }
+        table.append(tr);
+    }
     elemento.after(table)
 }
 
-crearCalendario(document.querySelector("#erm") ,2025, 10)
+crearCalendario(document.querySelector("#erm") ,2022, 11)
