@@ -1,0 +1,1 @@
+document.querySelector("#container").addEventListener("click",(event)=> event.target.closest(".remove-button")?.closest(".pane").remove())
