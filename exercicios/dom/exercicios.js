@@ -2,8 +2,8 @@
 // a == c
 
 // 2.
-let lista = document.querySelectorAll("ol");
-for (li of lista) {
+let lista = document.querySelector("ol");
+for (li of lista.querySelectorAll("li")) {
   li.remove();
 }
 

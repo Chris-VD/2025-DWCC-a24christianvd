@@ -10,13 +10,16 @@ li.classList.add("item-lista")
 document.querySelector("ul").append(li)
 
 // Modifica o ancho do div con id "contedor" a 800px usando JavaScript 
-document.querySelector("#contedor").setAttribute("style", "widht: 800px")
+//document.querySelector("#contedor").setAttribute("style", "widht: 800px")
+document.querySelector("#contedor").computedStyleMap.width = "800px";
 
 // Cambia o valor do atributo "placeholder" do input a "Escribe aquí..." 
-document.querySelector("#entradaTexto").setAttribute("placeholder", "Escribe aquí...")
+//document.querySelector("#entradaTexto").setAttribute("placeholder", "Escribe aquí...")
+document.querySelector("#entradaTexto").ariaPlaceholder = "Escribe aquí...";
 
 // Selecciona a lista con id "lista" e cámbialle o tamaño da fonte a 18px
-document.querySelector("#lista").setAttribute("style", "font-size: 18px")
+//document.querySelector("#lista").setAttribute("style", "font-size: 18px")
+document.querySelector("#lista").computedStyleMap.fontSize = "18px";
 
 // Elimina o segundo elemento da lista (Item 2)
 document.querySelector("#lista").firstElementChild.nextElementSibling.remove()

@@ -16,19 +16,15 @@ let arbore = {
 };
 
 function createTree(data){
-    let ul = document.createElement("ul")
-    if (Object.values(data).length == 0){
-        return 
-    }
-    console.log(data);
+    if (Object.values(data).length == 0) return "";
+    let ul = document.createElement("ul");
     for (element in data){
-        let li = document.createElement("li")
-        li.append(element)
-        console.log(Object.values(data[element]).length)
-        li.append(createTree(data[element]))
-        ul.append(li)
+        let li = document.createElement("li");
+        li.append(element);
+        li.append(createTree(data[element]));
+        ul.append(li);
     }
-    return ul
+    return ul;
 }
 
 document.querySelector("#erm").after(createTree(arbore))
