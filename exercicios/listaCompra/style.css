@@ -1,3 +1,40 @@
+body{
+    background-color: gainsboro;
+}
 .hidden{
     display: none;
+}
+.item:hover{
+    background-color:gray;
+}
+.cross{
+    padding: 5%;
+    color:red;
+}
+.cross:hover{
+    font-weight: bold;
+    
+}
+#itemList{
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item{
+    padding: 0.5vw;
+    width: 150px;
+    list-style: none;
+
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.itemText{
+    display: flex;
+    max-width: 70%;
 }
