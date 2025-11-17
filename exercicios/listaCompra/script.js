@@ -6,7 +6,7 @@ const filterInput = document.querySelector("#filterItem")
 const letterList = "qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNM"
 let elementList = []
 
-introElement.addEventListener("click", (e) => {
+introElement.addEventListener("click", () => {
     if (elementToAdd.value != "" & !elementList.includes(elementToAdd.value)) {
         elementList.push(elementToAdd.value);
         let nu = document.createElement("li");
@@ -47,7 +47,7 @@ borrarTodoBut.addEventListener("click", ()=>{
     refresh()
 })
 
-filterInput.addEventListener("keyup", (event)=>{
+filterInput.addEventListener("keyup", ()=>{
     let re = RegExp(filterInput.value)
     itemList.querySelectorAll("li").forEach((li)=>{
         if (!re.test(li.innerText))
