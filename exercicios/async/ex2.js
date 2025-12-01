@@ -8,34 +8,6 @@ xml.open(
 xml.responseType = "json";
 xml.send();
 
-/*
-    <h1><!-- squadName --></h1>
-    <p>
-        Hometown:
-        <!-- homeTown -->
-        // Formed:
-        <!-- formed -->
-    </p>
-
-    <article>
-        <h2><!-- name --></h2>
-        <p>
-            Secret identity:
-            <!-- secretIdentity -->
-        </p>
-        <p>
-            Age:
-            <!-- age -->
-        </p>
-        <p>Superpowers:</p>
-        <ul>
-            <li><!-- powers[0] --></li>
-            <li><!-- powers[1] --></li>
-            <li><!-- powers[2] --></li>
-        </ul>
-    </article>
-*/
-
 xml.addEventListener("load", () => {
     let obx = xml.response
 
@@ -65,6 +37,5 @@ xml.addEventListener("load", () => {
         article.append(h2, ps, pa, psp, ul)
         section.append(article)
     }
-
 });
 
