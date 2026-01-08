@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="./clase.js"></script>
+    <style>
+        .blue{
+            color: blue;
+        }
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-bind="titleClass">{{msg}}</h1>
+        <p v-if="bool">Opcional</p>
+        <p v-bind:[att]="titleClass.class">{{ message }}</p>
+        <!-- [att] para que pille o valor de att dentro do js -->
+        <p :class="clase" v-html="message2"></p>
+        <!-- v-bind:class="clase" == :class="clase", funciona igual -->
+        <p>{{num}}</p>
+        <p>{{bool}}</p>
+        <p>{{arr[2]}}</p>
+        <p>{{obx.lol}}</p>
+    </div>
+</body>
+
+</html>
