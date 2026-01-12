@@ -25,7 +25,10 @@
         <!-- [att] para que pille o valor de att dentro do js -->
         <p :class="clase" v-html="message2"></p>
         <!-- v-bind:class="clase" == :class="clase", funciona igual -->
-        <p>{{num}}</p>
+        <!-- se o nome clase fose "class", poderíase abreviar inda máis poñendo :class a secas
+            <p :class v-html="message2"></p>
+        -->
+        <button @click="method(2, $event)">{{num}}</button>
         <p>{{bool}}</p>
         <p>{{arr[2]}}</p>
         <p>{{obx.lol}}</p>

@@ -19,4 +19,11 @@ createApp({
                 class:"red"}
         };
     },
+    methods: {
+        method(num, event) {
+            console.log(event);
+            
+            this.num = this.num + num;
+        }
+    }
 }).mount("#app");
