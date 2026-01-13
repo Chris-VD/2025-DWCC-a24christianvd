@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="./ex4.js"></script>
+</head>
+<body id="app">
+    <form action="">
+        <input type="text" v-model="text" placeholder="Texto"><br>
+        <textarea name="area" id="area" v-model="area" placeholder="Textarea"></textarea><br>
+        <input type="checkbox" name="un" id="un" v-model="un">
+        <label for="un">Un</label>
+        <input type="checkbox" name="dous" id="dous" v-model="dous">
+        <label for="dous">Dous</label><br>
+        <input type="radio" name="radio" id="tres" v-model="radio" value="tres">
+        <label for="tres">Tres</label>
+        <input type="radio" name="radio" id="catro" v-model="radio" value="catro">
+        <label for="catro">Catro</label>
+        <input type="radio" name="radio" id="cinco" v-model="radio" value="cinco">
+        <label for="cinco">Cinco</label><br>
+        <select name="select" id="select" v-model="select">
+            <option disabled value="">Escolla</option>
+            <option value="seis">Seis</option>
+            <option value="sete">Sete</option>
+        </select><br>
+        <input type="submit" value="Submit">
+        <button @click="clear">Clear</button>
+    </form>
+    {{text}}<br>
+    {{area}}<br>
+    {{un ? "Un":""}} {{dous ? "Dous":""}}<br>
+    {{radio}}<br>
+    {{select}}
+</body>
+</html>

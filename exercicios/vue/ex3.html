@@ -8,13 +8,14 @@
     <script defer src="./ex3.js"></script>
 </head>
 <body id="app">
+    <button @click.middle="log">Press</button>
     <div style="border:2px solid black">
         <input @keyup="reload" type="text">
         <p>{{text}}</p>
     </div>
     <div style="border:2px solid black">
-        <form @submit.prevent="t2">
-            <input type="text">
+        <form @submit="t2">
+            <input id="inp" type="text">
         </form>
         <p>{{text2}}</p>
     </div>

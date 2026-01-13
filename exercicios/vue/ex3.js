@@ -11,8 +11,12 @@ createApp({
             this.text = event.target.value
         },
         t2(event){
-            
-            this.text2 = event.target.value
+            event.preventDefault()
+            this.text2 = document.querySelector("#inp").value
+            document.querySelector("#inp").value = ""
+        },
+        log(){
+            console.log("pressed")
         }
     }
 }).mount("#app")
