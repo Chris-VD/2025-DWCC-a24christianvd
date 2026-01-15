@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="./ex5.js"></script>
+    <style>
+        .first{
+            background-color: yellow;
+            color: red;
+        }
+        div{
+            width: 50%;
+            height: 100px;
+            border: 2px solid black;
+        }
+        .activa{
+            border: 4px dotted blue;
+        }
+    </style>
+</head>
+<body id="app">
+    <p class="first" @click="ff">First paragraph</p>
+    <p :style="{color: cl}" @click="ss">Second paragraph</p>
+    <div @click="change"></div>
+    <div @click="change"></div>
+    <div @click="changeOne" style="border: none; display: flex;">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+</body>
+</html>
