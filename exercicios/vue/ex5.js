@@ -12,7 +12,7 @@ createApp({
         },
         ss(){
             if (this.cl == "green") this.cl = "red"
-            else this.cl = "green"
+            else this.cl = "green" 
         },
         change(event){
             event.target.classList.toggle("activa")
